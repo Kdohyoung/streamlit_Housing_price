@@ -1,6 +1,6 @@
 import streamlit as st
 from app_home import run_home
-
+from app_eda import run_eda
 
 
 def main() :
@@ -10,7 +10,7 @@ def main() :
     if choice == menu[0] :
         run_home()
     elif choice == menu[1] :
-        pass
+        run_eda()
     elif choice == menu[2] :
         pass
 
