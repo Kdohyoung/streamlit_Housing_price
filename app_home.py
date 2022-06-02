@@ -4,6 +4,8 @@ from PIL import Image
 
 
 def  run_home() :
+    df = pd.read_csv('data/incheon.csv',encoding='cp949')
+    df = df.drop(['고유번호','법정동코드','동코드','동명','표준지여부','기준월','데이터기준일자'],axis=1)
     st.subheader('인천광역시 서구 단독주택 가격 관련 데이터입니다.')
     st.text('왼쪽 사이드 바에서 원하는 항목을 선택하세요')
 
