@@ -13,11 +13,7 @@ def run_eda() :
     else : 
         st.text('체크박스룰 눌러주세요.')
 
-    df2 = df.drop(['특수지구분코드','본번','부번','건축물대장고유번호','기준년도'],axis=1)
-    st.subheader('주택 정보 컬럼별 데이터')
-    column_list = df2.columns
-    choice_list = st.multiselect('컬럼을 선택하세요',column_list)
-    st.dataframe(df[choice_list])
+
 
 
 
