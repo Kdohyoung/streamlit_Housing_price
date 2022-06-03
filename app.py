@@ -2,6 +2,8 @@ import streamlit as st
 from app_home import run_home
 from app_eda import run_eda
 from app_price import run_price
+from app_ml import run_ml
+from app_chart import run_chart
 
 def main() :
     st.title('주택 데이터 제공 및 가격 예측')
@@ -14,9 +16,9 @@ def main() :
     elif choice == menu[2] :
         run_price()
     elif choice == menu[3] :
-        pass
+        run_chart()
     elif choice == menu[4] :
-        pass
+        run_ml()
 
 
 
