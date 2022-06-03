@@ -13,6 +13,13 @@ def run_eda() :
     else : 
         st.text('체크박스룰 눌러주세요.')
 
+    df2 = df.drop(['특수지구분코드','본번','부번','건축물대장고유번호','기준년도'],axis=1)
+    st.subheader('주택 정보 컬럼별 데이터')
+    column_list = df2.columns
+    choice_list = st.multiselect('컬럼을 선택하세요',column_list)
+    st.dataframe(df[choice_list])
+
+
 
     st.subheader('각 데이터별 최대값 , 최소값')
     col_list = df.columns[7 : ]
@@ -25,13 +32,6 @@ def run_eda() :
     st.dataframe(df_max)
     st.text('{} 컬럼의 최소값에 해당하는 데이터 입니다.'.format(selected_col))
     st.dataframe(df_min)
-
-
-    st.subheader('법정동명별 데이터')
-    sentence = st.text_input(' **동 검색')
-    if st.button('검색'):
-        houes_info = df.loc [df['법정동명'].str.lower().str.contains(sentence.lower()) , ]
-        st.write(houes_info)
 
 
     st.subheader('인천 서구 지도 데이터')
