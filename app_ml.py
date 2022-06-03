@@ -4,7 +4,7 @@ import joblib
 import numpy as np
 import sklearn
 def run_ml():
-    st.subheader('ÀÎÃµ¼­±¸ Áı°ª ¿¹Ãø')
+    st.subheader('ì¸ì²œì„œêµ¬ ì§‘ê°’ ì˜ˆì¸¡')
 
     print(sklearn.__version__)
 
@@ -14,15 +14,15 @@ def run_ml():
     scaler_y = joblib.load('data/scaler_y1.pkl')
 
 
-    ÅäÁö´ëÀå¸éÀû = st.number_input('ÅäÁö´ëÀå¸éÀû ÀÔ·Â (m©÷)',0,)
-    »êÁ¤´ëÁö¸éÀû = st.number_input('»êÁ¤´ë¸éÀû ÀÔ·Â (m©÷)',0,)
-    °Ç¹°ÀüÃ¼¿¬¸éÀû = st.number_input('°Ç¹°ÀüÃ¼¿¬¸éÀû ÀÔ·Â (m©÷)',0,)
-    °Ç¹°»êÁ¤¿¬¸éÀû = st.number_input('°Ç¹°»êÁ¤ ¿¬¸éÀû ÀÔ·Â (m©÷)',0,)
+    í† ì§€ëŒ€ì¥ë©´ì  = st.number_input('í† ì§€ëŒ€ì¥ë©´ì  ì…ë ¥ (mÂ²)',0,)
+    ì‚°ì •ëŒ€ì§€ë©´ì  = st.number_input('ì‚°ì •ëŒ€ë©´ì  ì…ë ¥ (mÂ²)',0,)
+    ê±´ë¬¼ì „ì²´ì—°ë©´ì  = st.number_input('ê±´ë¬¼ì „ì²´ì—°ë©´ì  ì…ë ¥ (mÂ²)',0,)
+    ê±´ë¬¼ì‚°ì •ì—°ë©´ì  = st.number_input('ê±´ë¬¼ì‚°ì • ì—°ë©´ì  ì…ë ¥ (mÂ²)',0,)
 
     
-    if st.button ('ÁÖÅÃ ±¸¸Å ±İ¾× ¿¹Ãø') : 
+    if st.button ('ì£¼íƒ êµ¬ë§¤ ê¸ˆì•¡ ì˜ˆì¸¡') : 
 
-        new_data = np.array([ÅäÁö´ëÀå¸éÀû,»êÁ¤´ëÁö¸éÀû,°Ç¹°ÀüÃ¼¿¬¸éÀû,°Ç¹°»êÁ¤¿¬¸éÀû])
+        new_data = np.array([í† ì§€ëŒ€ì¥ë©´ì ,ì‚°ì •ëŒ€ì§€ë©´ì ,ê±´ë¬¼ì „ì²´ì—°ë©´ì ,ê±´ë¬¼ì‚°ì •ì—°ë©´ì ])
 
         new_data = new_data.reshape(1,4)
         new_data=scaler_X.transform(new_data)
@@ -31,5 +31,5 @@ def run_ml():
 
         y_pred = scaler_y.inverse_transform(y_pred)
         y_pred = round(y_pred[0,0])
-        st.write('ÁÖÅÃÀÇ ¿¹»ó °¡°İÀº' + str(y_pred)+'¿ø ÀÔ´Ï´Ù')
+        st.write('ì£¼íƒì˜ ì˜ˆìƒ ê°€ê²©ì€' + str(y_pred)+'ì› ì…ë‹ˆë‹¤')
 

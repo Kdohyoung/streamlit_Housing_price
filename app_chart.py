@@ -4,19 +4,17 @@ import seaborn as sb
 import matplotlib.pyplot as plt
 import platform
 from matplotlib import font_manager, rc
-plt.rcParams['axes.unicode_minus'] = False
-if platform.system() == 'Linux':
-    rc('font', family='NanumGothic')
-
 
 def run_chart() :
-    st.subheader('¹ıÁ¤µ¿¸íº° µ¥ÀÌÅÍ °¹¼ö')
+    st.subheader('ë²•ì •ë™ëª…ë³„ ë°ì´í„° ê°¯ìˆ˜')
 
-    df = pd.read_csv('data/incheon.csv',encoding='EUC-KR')
-    df = df.drop(['°íÀ¯¹øÈ£','¹ıÁ¤µ¿ÄÚµå','µ¿ÄÚµå','µ¿¸í','Ç¥ÁØÁö¿©ºÎ','±âÁØ¿ù','µ¥ÀÌÅÍ±âÁØÀÏÀÚ'],axis=1)
+    df = pd.read_csv('data/incheon.csv',encoding='cp949')
+    df = df.drop(['ê³ ìœ ë²ˆí˜¸','ë²•ì •ë™ì½”ë“œ','ë™ì½”ë“œ','ë™ëª…','í‘œì¤€ì§€ì—¬ë¶€','ê¸°ì¤€ì›”','ë°ì´í„°ê¸°ì¤€ì¼ì'],axis=1)
 
-    st.text('³»¸²Â÷¼ø')
+    plt.rcParams['font.family'] = 'Malgun Gothic'
+
+    st.text('ë‚´ë¦¼ì°¨ìˆœ')
     fig = plt.figure()
-    my_order = df['¹ıÁ¤µ¿¸í'].value_counts().index
-    sb.countplot(data=df, x= '¹ıÁ¤µ¿¸í' ,  order=my_order)
+    my_order = df['ë²•ì •ë™ëª…'].value_counts().index
+    sb.countplot(data=df, y= 'ë²•ì •ë™ëª…' ,  order=my_order)
     st.pyplot(fig)

@@ -7,46 +7,43 @@ from PIL import Image
 
 def  run_price() :
     df = pd.read_csv('data/incheon.csv',encoding='cp949')
-    df = df.drop(['°íÀ¯¹øÈ£','¹ıÁ¤µ¿ÄÚµå','µ¿ÄÚµå','µ¿¸í','Ç¥ÁØÁö¿©ºÎ','±âÁØ¿ù','µ¥ÀÌÅÍ±âÁØÀÏÀÚ'],axis=1)
-    df2 = df.drop(['Æ¯¼öÁö±¸ºĞÄÚµå','º»¹ø','ºÎ¹ø','°ÇÃà¹°´ëÀå°íÀ¯¹øÈ£','±âÁØ³âµµ'],axis=1)
-    st.subheader('ÁÖÅÃ Á¤º¸ ÄÃ·³º° µ¥ÀÌÅÍ')
+    df = df.drop(['ê³ ìœ ë²ˆí˜¸','ë²•ì •ë™ì½”ë“œ','ë™ì½”ë“œ','ë™ëª…','í‘œì¤€ì§€ì—¬ë¶€','ê¸°ì¤€ì›”','ë°ì´í„°ê¸°ì¤€ì¼ì'],axis=1)
+    df2 = df.drop(['íŠ¹ìˆ˜ì§€êµ¬ë¶„ì½”ë“œ','ë³¸ë²ˆ','ë¶€ë²ˆ','ê±´ì¶•ë¬¼ëŒ€ì¥ê³ ìœ ë²ˆí˜¸','ê¸°ì¤€ë…„ë„'],axis=1)
+    st.subheader('ì£¼íƒ ì •ë³´ ì»¬ëŸ¼ë³„ ë°ì´í„°')
     column_list = df2.columns
-    choice_list = st.multiselect('ÄÃ·³À» ¼±ÅÃÇÏ¼¼¿ä',column_list)
+    choice_list = st.multiselect('ì»¬ëŸ¼ì„ ì„ íƒí•˜ì„¸ìš”',column_list)
     st.dataframe(df[choice_list])
 
-    st.subheader('°¡Àå ºñ½Ñ ÁÖÅÃ µ¥ÀÌÅÍ')
-    best = df.loc[df['ÁÖÅÃ°¡°İ']==df['ÁÖÅÃ°¡°İ'].max(),]
+    st.subheader('ê°€ì¥ ë¹„ì‹¼ ì£¼íƒ ë°ì´í„°')
+    best = df.loc[df['ì£¼íƒê°€ê²©']==df['ì£¼íƒê°€ê²©'].max(),]
     st.dataframe(best)
 
-    st.subheader('°¡Àå ½Ñ ÁÖÅÃ µ¥ÀÌÅÍ')
-    worst = df.loc[df['ÁÖÅÃ°¡°İ']== 2440000 ]
+    st.subheader('ê°€ì¥ ì‹¼ ì£¼íƒ ë°ì´í„°')
+    worst = df.loc[df['ì£¼íƒê°€ê²©']== 2440000 ]
     st.dataframe(worst)
 
 
     
-    st.subheader('Áö¿ªº° ÁÖÅÃ Æò±Õ°¡°İ top 5 ')
-    df_mean = df.groupby('¹ıÁ¤µ¿¸í')['ÁÖÅÃ°¡°İ'].mean().to_frame()
-    df_mean = df_mean.sort_values('ÁÖÅÃ°¡°İ',ascending=False).round()
-    df_mean = df_mean['ÁÖÅÃ°¡°İ'].astype(int)
+    st.subheader('ì§€ì—­ë³„ ì£¼íƒ í‰ê· ê°€ê²© top 5 ')
+    df_mean = df.groupby('ë²•ì •ë™ëª…')['ì£¼íƒê°€ê²©'].mean().to_frame()
+    df_mean = df_mean.sort_values('ì£¼íƒê°€ê²©',ascending=False).round()
+    df_mean = df_mean['ì£¼íƒê°€ê²©'].astype(int)
     st.dataframe(df_mean.head(5))
 
 
-    st.subheader('ÅäÁö´ëÀå¸éÀû º° ÁÖÅÃ°¡°İ')
-    df_mean3 = df.groupby('ÅäÁö´ëÀå¸éÀû')['ÁÖÅÃ°¡°İ'].mean().to_frame()
-    df_mean3 = df_mean3['ÁÖÅÃ°¡°İ'].astype(int)
+    st.subheader('í† ì§€ëŒ€ì¥ë©´ì  ë³„ ì£¼íƒê°€ê²©')
+    df_mean3 = df.groupby('í† ì§€ëŒ€ì¥ë©´ì ')['ì£¼íƒê°€ê²©'].mean().to_frame()
+    df_mean3 = df_mean3['ì£¼íƒê°€ê²©'].astype(int)
     st.dataframe(df_mean3)
 
 
-    st.subheader('ÅäÁö´ëÀå¸éÀû º° ÁÖÅÃ°¡°İ')
-    df_mean4 = df.groupby('°Ç¹°ÀüÃ¼¿¬¸éÀû')['ÁÖÅÃ°¡°İ'].mean().to_frame()
-    df_mean4 = df_mean4['ÁÖÅÃ°¡°İ'].astype(int)
+    st.subheader('í† ì§€ëŒ€ì¥ë©´ì  ë³„ ì£¼íƒê°€ê²©')
+    df_mean4 = df.groupby('ê±´ë¬¼ì „ì²´ì—°ë©´ì ')['ì£¼íƒê°€ê²©'].mean().to_frame()
+    df_mean4 = df_mean4['ì£¼íƒê°€ê²©'].astype(int)
     st.dataframe(df_mean4)
 
-    st.subheader('ÅäÁö´ëÀå¸éÀû º° ÁÖÅÃ°¡°İ')
-    df_mean5 = df.groupby('°Ç¹°»êÁ¤¿¬¸éÀû')['ÁÖÅÃ°¡°İ'].mean().to_frame()
-    df_mean5 = df_mean5['ÁÖÅÃ°¡°İ'].astype(int)
+    st.subheader('í† ì§€ëŒ€ì¥ë©´ì  ë³„ ì£¼íƒê°€ê²©')
+    df_mean5 = df.groupby('ê±´ë¬¼ì‚°ì •ì—°ë©´ì ')['ì£¼íƒê°€ê²©'].mean().to_frame()
+    df_mean5 = df_mean5['ì£¼íƒê°€ê²©'].astype(int)
     st.dataframe(df_mean5)
-
-
-
    
