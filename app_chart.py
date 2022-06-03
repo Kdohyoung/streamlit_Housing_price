@@ -3,7 +3,11 @@ import pandas as pd
 import seaborn as sb 
 import matplotlib.pyplot as plt
 import platform
+import platform
 from matplotlib import font_manager, rc
+plt.rcParams['axes.unicode_minus'] = False
+if platform.system() == 'Linux':
+    rc('font', family='Malgun Gothic')
 
 def run_chart() :
     st.subheader('법정동명별 데이터 갯수')
