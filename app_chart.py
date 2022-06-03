@@ -7,9 +7,8 @@ import platform
 from matplotlib import font_manager, rc
 plt.rcParams['axes.unicode_minus'] = False
 if platform.system() == 'Linux':
-    rc('font', family='Malgun Gothic')
+    rc('font', family='NanumGothic')
 
-plt.rcParams['font.family'] = 'Malgun Gothic'
 def run_chart() :
     st.subheader('법정동명별 데이터 갯수')
 
