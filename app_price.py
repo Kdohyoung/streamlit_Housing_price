@@ -41,12 +41,12 @@ def  run_price() :
     st.dataframe(df_mean3)
 
 
-    st.subheader('토지대장면적 별 주택가격')
+    st.subheader('건물전체 연면적 별 주택가격')
     df_mean4 = df.groupby('건물전체연면적')['주택가격'].mean().to_frame()
     df_mean4 = df_mean4['주택가격'].astype(int)
     st.dataframe(df_mean4)
 
-    st.subheader('토지대장면적 별 주택가격')
+    st.subheader('건물산정 연면적 별 주택가격')
     df_mean5 = df.groupby('건물산정연면적')['주택가격'].mean().to_frame()
     df_mean5 = df_mean5['주택가격'].astype(int)
     st.dataframe(df_mean5)
