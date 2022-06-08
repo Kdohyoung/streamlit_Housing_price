@@ -9,7 +9,7 @@ def  run_price() :
     df = pd.read_csv('data/incheon.csv',encoding='cp949')
     df = df.drop(['고유번호','법정동코드','동코드','동명','표준지여부','기준월','데이터기준일자'],axis=1)
    
-    st.subheader('법정동명별 가격')
+    st.subheader('법정동명별 데이터')
     sentence = st.text_input(' **동 검색')
     if st.button('검색'):
         houes_info = df.loc [df['법정동명'].str.lower().str.contains(sentence.lower()) , ]
