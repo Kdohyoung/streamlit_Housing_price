@@ -28,11 +28,17 @@ streamlit_House_price
 
 사용한 라이브러리 
 =============
+
 1.import streamlit as st
+
 2.from streamlit_option_menu import option_menu
+
 3.import pandas as pd
+
 4.from PIL import Image
+
 5.import numpy as np
+
 6.import seaborn as sb
 
 
