@@ -42,5 +42,14 @@ streamlit_House_price
 6.import seaborn as sb
 
 
+사용한 인공지능 라이브러리
+=============
+
+1.from sklearn.preprocessing import MinMaxScaler
+
+2.from sklearn.model_selection import train_test_split
+
+3.from sklearn.linear_model import LinearRegression
+
 
 
